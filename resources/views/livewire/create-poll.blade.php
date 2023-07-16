@@ -6,6 +6,12 @@
 
         <input type="text" wire:model="title"/>
 
+        @error('title')
+            <div class="text-red-500">
+                {{ $message }}
+            </div>
+        @enderror
+
         <!-- ações são métodos nas component classes(tipo criar uma poll) -->
         <div class="mb-4 mt-4">
             <button class="btn" wire:click.prevent="addOption"> 
@@ -25,6 +31,11 @@
                             Remove
                         </button>
                     </div>
+                    @error("options.{$index}")
+                            <div class="text-red-500">
+                                {{ $message }}
+                            </div>
+                    @enderror
                 </div>
             @endforeach
         </div>
